@@ -1,0 +1,11 @@
+.playButton:hover{
+    -fx-effect: innershadow( gaussian, red, 20, 0, 3, 3 );
+}
+
+.newGame:hover{
+    -fx-effect: innershadow( gaussian, green, 20, 0, 5, 5 );
+}
+.card{
+    -fx-pref-height: 150;
+    -fx-pref-width: 103;
+}
