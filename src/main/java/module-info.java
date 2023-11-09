@@ -8,8 +8,9 @@ module com.example.psp6blackjack {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires lombok;
+    requires MyLibrary;
 
     opens com.example.psp6blackjack to javafx.fxml;
     exports com.example.psp6blackjack;
