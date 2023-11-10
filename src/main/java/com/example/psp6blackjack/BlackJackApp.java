@@ -16,7 +16,7 @@ public class BlackJackApp extends Application {
     private Stage primaryStage;
     private Pane rootLayout;
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage){
         this.primaryStage=primaryStage;
         this.primaryStage.setTitle("Black Jack");
         showWindow();
@@ -28,6 +28,7 @@ public class BlackJackApp extends Application {
             loader.setLocation(BlackJackApp.class.getResource("scenes/MainScene.fxml"));
             rootLayout = loader.load();
             Scene scene = new Scene(rootLayout);
+            primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             InputStream iconStream = getClass().getResourceAsStream("icon/Icon.jfif");
             Image image = new Image(iconStream);

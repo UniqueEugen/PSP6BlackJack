@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="761.0" style="-fx-background-color: rgb(53, 101, 77);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.psp6blackjack.BlackJackController">
+<Pane maxHeight="547.0" maxWidth="761" minHeight="547.0" minWidth="761" prefHeight="547.0" prefWidth="761.0" style="-fx-background-color: rgb(53, 101, 77);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.psp6blackjack.BlackJackController">
    <children>
       <AnchorPane fx:id="board" layoutY="-1.0" prefHeight="547.0" prefWidth="761.0">
          <children>
-            <Pane fx:id="dealerCardsPane" layoutX="238.0" layoutY="24.0" prefHeight="151.0" prefWidth="361.0" />
+            <Pane fx:id="dealerCardsPane" layoutX="205.0" layoutY="23.0" prefHeight="151.0" prefWidth="453.0" />
             <Button fx:id="newGameButton" layoutX="283.0" layoutY="274.0" mnemonicParsing="false" onAction="#startNewGame" prefHeight="73.0" prefWidth="136.0" styleClass="newGame" stylesheets="@../styles/Style.css" text="New game">
                <font>
                   <Font size="18.0" />
@@ -51,12 +51,12 @@
                   <Image url="@../cards/rubashca.png" />
                </image>
             </ImageView>
-            <Text fx:id="loseText" disable="true" fill="RED" layoutX="118.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU LOSE" textAlignment="CENTER" visible="false" wrappingWidth="465.3367156982422">
+            <Text fx:id="loseText" disable="true" fill="RED" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU LOSE" textAlignment="CENTER" visible="false" wrappingWidth="744.5367889404297">
                <font>
                   <Font size="96.0" />
                </font>
             </Text>
-            <Text fx:id="winText" disable="true" layoutX="118.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU WIN" visible="false" wrappingWidth="465.3367156982422">
+            <Text fx:id="winText" disable="true" layoutX="295.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YOU WIN" visible="false" wrappingWidth="465.3367156982422">
                <font>
                   <Font size="96.0" />
                </font>
@@ -76,6 +76,21 @@
                      </stops>
                   </LinearGradient>
                </fill>
+            </Text>
+            <Text fx:id="blackJackText" disable="true" fill="RED" layoutX="25.0" layoutY="195.0" rotate="32.7" scaleZ="999.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLACK JACK!!!" textAlignment="CENTER" visible="false" wrappingWidth="293.1061420440674">
+               <font>
+                  <Font name="Californian FB" size="90.0" />
+               </font>
+            </Text>
+            <Text fx:id="dealerSum" disable="true" layoutX="694.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="21" visible="false" wrappingWidth="39.73664855957031">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="playerSum" disable="true" layoutX="694.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="21" visible="false" wrappingWidth="39.73664855957031">
+               <font>
+                  <Font size="24.0" />
+               </font>
             </Text>
          </children>
       </AnchorPane>

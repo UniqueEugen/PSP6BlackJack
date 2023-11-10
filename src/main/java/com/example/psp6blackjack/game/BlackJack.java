@@ -86,7 +86,7 @@ public class BlackJack {
     }
 
     private void buildDeck(){
-        deck = new ArrayList<Card>();
+        deck = new ArrayList<>();
         String[] values = {"T", "2", "3", "4", "5", "6", "7", "8", "9", "10", "V", "D", "K"};
         String[] types = {"B", "C", "K", "P"};
         Arrays.stream(types).forEach(type->
@@ -94,6 +94,7 @@ public class BlackJack {
                     Card card = new Card(value, type);
                     deck.add(card);
                 }));
+        deck.addAll(deck);
         Console.log("BUILD DECK SIZE: " + deck.size() + " DECK: " + deck);
     }
     private void shuffleDeck() {
@@ -115,7 +116,60 @@ public class BlackJack {
         Console.log(playerHand);
         return card.toString()+"/"+isEndGame;
     }
+
+    public void setHiddenCard() {
+        hiddenCard = deck.remove(deck.size()-1); // get ond remove last card (this is hidden card)
+        //dealerSum+=hiddenCard.getValue();
+        dealerAceCount+= hiddenCard.isAce() ? 1 : 0;
+    }
+
+    public String getHiddenCardOpen() {
+        dealerSum+=hiddenCard.getValue();
+        String res = isEndGame();
+        if(dealerSum<21 && playerSum==21 && playerHand.size()==2) res="Win";
+        return hiddenCard.toString()+"/"+res;
+    }
+    public String getHiddenCard(){
+        return hiddenCard.toString() + "/continue";
+    }
+
+    public String getDealerCard(){
+        Card card = deck.remove(deck.size()-1); // get ond remove last card (this is open card)
+        dealerSum+=card.getValue();
+        dealerAceCount+= card.isAce() ? 1 : 0;
+        dealerHand.add(card);
+        Console.log(dealerHand+ "check");
+        return card.toString() + "/" +isEndGame();
+    }
+
+    private String isEndGame(){
+        Console.log("DEALER HAND: " + dealerHand + "sum " + dealerSum);
+        Console.log("PLAYER HAND: "+ playerHand + "sum" + playerSum);
+        String endGame = dealerSum > 21 ? "Win":
+                         dealerSum < 17 ? "Continue":
+                         dealerSum < playerSum ? "Win": "Lose";
+        Console.log(endGame);
+        return endGame;
+    }
+
     public int getPlayerHandKol(){
         return playerHand.size()-1;
+    }
+    public int getDealerHandKol(){
+        return dealerHand.size()-1;
+    }
+    public boolean isBlackJack(){
+        Console.log(playerHand.size());
+        if(playerHand.size()==2 && playerSum==21){
+            Console.log("fsdfsfdsdf");
+            return true;
+        }
+        return false;
+    }
+    public String getPlayerSum(){
+        return playerSum.toString();
+    }
+    public String getDealerSum(){
+        return dealerSum.toString();
     }
 }
