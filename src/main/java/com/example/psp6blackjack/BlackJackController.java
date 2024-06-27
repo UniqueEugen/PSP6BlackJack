@@ -12,7 +12,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lombok.AllArgsConstructor;
-import myLibrary.console.Console;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -74,7 +73,7 @@ public class BlackJackController {
             transition.setNode(currentCardImage);
             lastCard = playerCardsPane.getLayoutX() + playerCardsPane.getPrefWidth()/2 +
                     blackJackGame.getPlayerHandKol()*25 -deck.getFitWidth();
-            Console.log(lastCard);
+            System.out.println(lastCard);
             transition.setToX(lastCard);
             transition.setToY(playerCardsPane.getLayoutY());
             transition.play();
@@ -103,8 +102,8 @@ public class BlackJackController {
             transition.setDuration(Duration.seconds(1));
             transition.setNode(currentCardImage);
             Double cardPlace = dealerCardsPane.getLayoutX() + (blackJackGame.getDealerHandKol())*120+60;
-            Console.log(cardPlace + " Y " + dealerCardsPane.getLayoutY());
-            Console.log(dealerCardsPane.getLayoutX());
+            System.out.println(cardPlace + " Y " + dealerCardsPane.getLayoutY());
+            System.out.println(dealerCardsPane.getLayoutX());
             transition.setToX(cardPlace);
             transition.play();
         }
@@ -157,14 +156,14 @@ public class BlackJackController {
         for (int i = 0; i < playerCards.size(); i++) {
             threads.add(new Thread(new OldPlayerCardsThread(playerCards.get(i), playerCards.size() - i)));
         }
-        Console.log(threads.size());
+        System.out.println(threads.size());
         newPlayerCardThread.start();
         threads.forEach(thread -> thread.start());
         try {
             newPlayerCardThread.join();
             //threads.get(threads.size() - 1).join();
         } catch (Exception e) {
-            Console.log(e);
+            System.out.println(e);
         }
         playerCards.add(currentCardImage);
         if (playerCards.size() >= 2) {
@@ -183,7 +182,7 @@ public class BlackJackController {
         try {
             dealerCardThread.join();
         }catch (InterruptedException e){
-            Console.log(e+ "  eception!");
+            System.out.println(e+ "  eception!");
         }
         String currentCard[] = blackJackGame.getDealerCard().split("/");
         showNewCard(currentCard[0]);
@@ -195,9 +194,9 @@ public class BlackJackController {
         hiddenCardImage.setFitWidth(1);
         hiddenCardImage.setLayoutX(dealerCardsPane.getLayoutX()+40);
         hiddenCardImage.setVisible(false);
-        Console.log(dealerCards);
+        System.out.println(dealerCards);
         dealerCards.add(0,hiddenCardImage);
-        Console.log(dealerCards);
+        System.out.println(dealerCards);
         board.getChildren().add(board.getChildren().size()-2, dealerCards.get(0));
     }
 

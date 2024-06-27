@@ -2,8 +2,6 @@ package com.example.psp6blackjack.game;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import myLibrary.console.Console;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -52,7 +50,7 @@ public class BlackJack {
     private void startGame(){
         buildDeck();
         shuffleDeck();
-        Console.log("SHUFFLED DECK SIZE: " + deck.size() + " DECK: " + deck);
+        System.out.println("SHUFFLED DECK SIZE: " + deck.size() + " DECK: " + deck);
 
         dealerHand = new ArrayList();
         dealerSum=0;
@@ -95,7 +93,7 @@ public class BlackJack {
                     deck.add(card);
                 }));
         deck.addAll(deck);
-        Console.log("BUILD DECK SIZE: " + deck.size() + " DECK: " + deck);
+        System.out.println("BUILD DECK SIZE: " + deck.size() + " DECK: " + deck);
     }
     private void shuffleDeck() {
         Random rnd = new Random();
@@ -113,7 +111,7 @@ public class BlackJack {
         playerAceCount+= card.isAce() ? 1 : 0;
         String isEndGame="";
         if(playerSum>21) isEndGame="Lose"; else isEndGame="continue";
-        Console.log(playerHand);
+        System.out.println(playerHand);
         return card.toString()+"/"+isEndGame;
     }
 
@@ -138,17 +136,17 @@ public class BlackJack {
         dealerSum+=card.getValue();
         dealerAceCount+= card.isAce() ? 1 : 0;
         dealerHand.add(card);
-        Console.log(dealerHand+ "check");
+        System.out.println(dealerHand+ "check");
         return card.toString() + "/" +isEndGame();
     }
 
     private String isEndGame(){
-        Console.log("DEALER HAND: " + dealerHand + "sum " + dealerSum);
-        Console.log("PLAYER HAND: "+ playerHand + "sum" + playerSum);
+        System.out.println("DEALER HAND: " + dealerHand + "sum " + dealerSum);
+        System.out.println("PLAYER HAND: "+ playerHand + "sum" + playerSum);
         String endGame = dealerSum > 21 ? "Win":
                          dealerSum < 17 ? "Continue":
                          dealerSum < playerSum ? "Win": "Lose";
-        Console.log(endGame);
+        System.out.println(endGame);
         return endGame;
     }
 
@@ -159,9 +157,9 @@ public class BlackJack {
         return dealerHand.size()-1;
     }
     public boolean isBlackJack(){
-        Console.log(playerHand.size());
+        System.out.println(playerHand.size());
         if(playerHand.size()==2 && playerSum==21){
-            Console.log("fsdfsfdsdf");
+            System.out.println("fsdfsfdsdf");
             return true;
         }
         return false;

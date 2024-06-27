@@ -10,7 +10,6 @@ module com.example.psp6blackjack {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires lombok;
-    requires MyLibrary;
 
     opens com.example.psp6blackjack to javafx.fxml;
     exports com.example.psp6blackjack;
